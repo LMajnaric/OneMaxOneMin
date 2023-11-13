@@ -35,11 +35,10 @@ def perform_crossover_and_mutation(population, parents_indices, crossover_prob, 
         else:
             offspring[i], offspring[i+1] = parent1, parent2
 
-        # Mutation
-        mutation_matrix = np.random.rand(n)
+    # Mutation
+    for i in range(len(offspring)):
         for j in range(n):
-            if mutation_matrix[j] < mutation_prob:
+            if np.random.rand() < mutation_prob:
                 offspring[i][j] = 1 - offspring[i][j]
-                offspring[i+1][j] = 1 - offspring[i+1][j]
     
     return offspring
